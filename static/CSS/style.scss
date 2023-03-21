@@ -1,0 +1,155 @@
+* {
+	padding: 0;
+	margin: 0;
+	// background-color: #000000;
+	color: #14879f;
+	font-family: 'Poppins', 'sans-serif';
+}
+
+
+.poster {
+	position: relative;
+
+	// background-color: #000000;
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 400px;
+		filter: brightness(0.3);
+		margin: auto;
+	}
+}
+
+
+
+
+.intro {
+	position: absolute;
+	top: 25%;
+	// background-color: rgba($color: #00000000, $alpha: 0);
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	text-align: center;
+	padding: 20px 0px;
+
+	h1 {
+		text-align: center;
+		font-size: 2.5rem;
+		letter-spacing: 2px;
+		word-spacing: 5px;
+	}
+
+	p {
+		font-weight: 400;
+		text-align: center;
+		color: #72878b;
+		letter-spacing: 1.5px;
+		font-size: 10px;
+		margin-top: 0.5%;
+	}
+}
+
+
+.input_text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2%;
+
+	input {
+
+		text-align: center;
+		width: 50%;
+		color: #000000;
+		// height: 40px;
+		font-size: 15px;
+		border: 2px solid #005d6f;
+		padding: 10px;
+		letter-spacing: 2px;
+		border-radius: 5px;
+		background-color: rgba(240, 248, 255, 0);
+
+		&:value {
+			color: grey;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:hover {
+			border: 2px solid #005d6f;
+			border-color: #005d6f;
+		}
+	}
+
+	button {
+		margin-left: 10px;
+		padding: 10px;
+		color: black;
+		font-size: 12px;
+		letter-spacing: 2px;
+		border-radius: 5px;
+		border-color: #14879f;
+		transition: background-color 0.2s ease-in-out;
+
+		&:hover {
+			background-color: #005d6f;
+		}
+	}
+}
+
+
+.response {
+	// position: relative;
+	padding-left: 20px; // add some left padding to make room for the line
+	h1 {
+		margin-top: 6%;
+	  	margin-left: 30px; // add some space between the line and the text
+	}
+  }
+
+  body {
+	height: 100%;
+  }
+
+
+footer {
+	margin-top: 4%;
+	// display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 150px;
+	background-color: #000000;
+
+	h2 {
+
+		text-align: center;
+		letter-spacing: 4px;
+		font-size: 3rem;
+		text-transform: uppercase;
+	}
+}
+
+.footer-links {
+	display: flex;
+	flex-direction: row;
+	margin-top: 2%;
+	justify-content: space-around;
+	align-items: center;
+	gap: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 20px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+	color: #005d6f;
+}

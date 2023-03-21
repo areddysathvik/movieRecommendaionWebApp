@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Movie Recommendations</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,500;0,800;0,900;1,100;1,500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static',filename='CSS/style.css')}}">
+   </head>
+   <body>
+      <div class="poster">
+         <img src="../static/image.jpg" alt="">
+      </div>
+      <div class="intro">
+         <h1 class="intro-head">Find your Favourite Movies</h1>
+         <p class="intro-para">type in movie plot you like and we generate the movie names<br>you probably haven't seen</p>
+      </div>
+      <form action="" class="input_text" method="post">
+         <input type="text" placeholder="intense space travel movie" name="input_field" id="input_field" required>
+         <button type="submit" class="submit-button" >Generate</button>
+      </form>
+      <div class="response">
+         <h1>Recommendations</h1>
+      </div>
+      {% if check %}
+      <div class="titles">
+         <h2 class="movie-title">{{ Movie_names[0] }}</h2>
+         <p class="movie-info"><span class="movie-info">Year Released :</span> {{ dic[Movie_names[0]][0] }}</p>
+         <p class="movie-info"><span class="movie-info">IMDB Rating :</span> {{ dic[Movie_names[0]][1] }} </p>
+         <p class="movie-info"><span class="movie-info">Movie Plot :</span> {{ dic[Movie_names[0]][2] }} </p>
+         <a href={{ dic[Movie_names[0]][3] }} target="_blank" class="explore-more">Explore more</a>
+       </div>
+      <div class="titles">
+         <h2 class="movie-title">{{ Movie_names[1] }}</h2>
+         <p class="movie-info"><span class="movie-info">Year Released :</span> {{ dic[Movie_names[1]][0] }}</p>
+         <p class="movie-info"><span class="movie-info">IMDB Rating :</span> {{ dic[Movie_names[1]][1] }} </p>
+         <p class="movie-info"><span class="movie-info">Movie Plot :</span> {{ dic[Movie_names[1]][2] }} </p>
+         <a href={{ dic[Movie_names[2]][3] }} target="_blank" class="explore-more">Explore more</a>
+       </div>
+      <div class="titles">
+         <h2 class="movie-title">{{ Movie_names[2] }}</h2>
+         <p class="movie-info"><span class="movie-info">Year Released :</span> {{ dic[Movie_names[2]][0] }}</p>
+         <p class="movie-info"><span class="movie-info">IMDB Rating :</span> {{ dic[Movie_names[2]][1] }} </p>
+         <p class="movie-info"><span class="movie-info">Movie Plot :</span> {{ dic[Movie_names[2]][2] }} </p>
+         <a href={{ dic[Movie_names[2]][3] }} target="_blank" class="explore-more">Explore more</a>
+       </div>
+      <div class="titles">
+         <h2 class="movie-title">{{ Movie_names[3] }}</h2>
+         <p class="movie-info"><span class="movie-info">Year Released :</span> {{ dic[Movie_names[3]][0] }}</p>
+         <p class="movie-info"><span class="movie-info">IMDB Rating :</span> {{ dic[Movie_names[3]][1] }} </p>
+         <p class="movie-info"><span class="movie-info">Movie Plot :</span> {{ dic[Movie_names[3]][2] }} </p>
+         <a href={{ dic[Movie_names[3]][3] }} target="_blank" class="explore-more">Explore more</a>
+       </div>
+      <div class="titles">
+         <h2 class="movie-title">{{ Movie_names[4] }}</h2>
+         <p class="movie-info"><span class="movie-info">Year Released :</span> {{ dic[Movie_names[4]][0] }}</p>
+         <p class="movie-info"><span class="movie-info">IMDB Rating :</span> {{ dic[Movie_names[4]][1] }} </p>
+         <p class="movie-info"><span class="movie-info">Movie Plot :</span> {{ dic[Movie_names[4]][2] }} </p>
+         <a href={{ dic[Movie_names[4]][3] }} target="_blank" class="explore-more">Explore more</a>
+       </div>
+      {% endif %}
+
+      <footer>
+          <h2>Find me</h2>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/areddy-sathvik-reddy-602096255/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/areddysathvik" target="_blank">GitHub</a>
+        </div>
+    </footer>
+   
+   
+   
+   <script>
+const titles = document.querySelectorAll('.titles');
+    
+titles.forEach(title => {
+  title.style.marginLeft = '10%';
+  title.style.alignItems = 'center';
+  title.style.marginTop = '3%';
+  title.style.backgroundColor = 'black';
+  title.style.marginRight = '10%';
+  title.style.padding = '30px';
+  title.style.display = 'block';
+  title.style.border = '1px solid rgb(0, 0, 0)';
+  title.style.borderRadius = '20px';
+  
+  const movieTitle = title.querySelector('h2.movie-title');
+  if (movieTitle) {
+     movieTitle.style.color = 'white';
+     movieTitle.style.textTransform = 'uppercase';
+     movieTitle.style.letterSpacing = '4px';
+     movieTitle.style.marginBottom = '3%';
+   }
+   
+const ps = document.querySelectorAll('p.movie-info');
+if(ps){
+   ps.forEach(p => {
+   // p.marginLeft ='2%';
+   });
+}
+
+const spans = document.querySelectorAll('span');
+if(spans){
+spans.forEach(span => {
+  span.style.color = 'grey';
+  marginLeft = '3%';
+});
+}
+
+const links = title.querySelector('a.explore-more');
+   if (links) {
+  links.style.display = 'block';
+  links.style.padding = '10px 20px';
+  links.style.backgroundColor = '#15a4bd';
+  links.style.color = 'black';
+  links.style.borderRadius = '5px';
+  links.style.textDecoration = 'none';
+  links.style.marginTop = '10px';
+
+  // Add hover effect
+  links.style.transition = 'background-color 0.2s ease';
+  links.addEventListener('mouseover', () => {
+    links.style.backgroundColor = '#108db8';
+    links.style.color = 'black';
+  });
+  links.addEventListener('mouseout', () => {
+    links.style.backgroundColor = '#15a4bd';
+    links.style.color = 'black';
+  });
+} 
+   else {
+      title.style.display = 'block';
+   }
+}); 
+
+    
+    </script> 
+      
+   </body>
+   </html>
+   
