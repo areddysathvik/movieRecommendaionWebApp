@@ -7,22 +7,25 @@ from nltk.tokenize import word_tokenize
 import re
 import json
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-
 
 df = pd.read_csv("static\processed_data_movie.csv")
 lemmatizer = WordNetLemmatizer()
-tfidf = CountVectorizer()
-vec = tfidf.fit_transform(df['short_summary'])
+
+# Extract relevant features
+features = ['short_summary', 'genres', 'director', 'cast']
+df['all_features'] = df[features].apply(lambda x: ' '.join(x.dropna().astype(str)), axis=1)
+
+# Vectorize all features
+tfidf = TfidfVectorizer()
+vec = tfidf.fit_transform(df['all_features'])
 vec = pd.DataFrame(vec.toarray())
 
 def recommend_movie(inp_array):
-    similarties = cosine_similarity(inp_array,vec)
-    most_similar = np.argsort(similarties)[:,-5:].reshape(5)
+    similarities = cosine_similarity(inp_array, vec)
+    most_similar = np.argsort(similarities)[:,-5:].reshape(5)
     return most_similar
-
 
 def input_process(inp):
     text = inp.lower()
