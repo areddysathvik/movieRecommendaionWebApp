@@ -7,14 +7,14 @@ from nltk.tokenize import word_tokenize
 import re
 import json
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
 
 df = pd.read_csv("static\processed_data_movie.csv")
 lemmatizer = WordNetLemmatizer()
-tfidf = CountVectorizer()
+tfidf = TfidfVectorizer()
 vec = tfidf.fit_transform(df['short_summary'])
 vec = pd.DataFrame(vec.toarray())
 
